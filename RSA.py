@@ -32,3 +32,9 @@ d = modinv(e, phi)
 # Encrypt our message
 cypher = (message**e) % n
 print(cypher)
+
+
+# decrypt
+
+origMessage = (cypher**d) % n
+print(origMessage)
