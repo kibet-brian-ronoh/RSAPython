@@ -1,5 +1,40 @@
-import math
+def convert(list): 
+    """Merge list of integers to one integer """ 
+    # Converting integer list to string list 
+    s = [str(i) for i in list] 
+    # Join list items using join() 
+    res = int("".join(s)) 
+      
+    return(res)
 
+def encode(message):
+    """ Encode message into ascii array"""
+    chars = []
+    for c in message:
+        
+        chars.append(ord(c))
+    return chars
+
+
+
+one = encode("hello how are you my friend")
+two = convert(one)
+print(two)
+
+def decode(message):
+    message = str(message)
+    decoded = []
+    slider = 3
+    numList = [int(message[i:i+slider]) for i in range(0, len(message), slider)]
+   
+    
+    for i in range(len(numList)):
+        decoded.append(chr(numList[i]))
+
+    decoded = ''.join(decoded)
+
+    return decoded
+print(decode(two))
 message = 1511
 
 # 2 prime mumbers
@@ -26,15 +61,24 @@ def modinv(a, m):
     else:
         return x % m
 
-
+# calculate our exponent
 d = modinv(e, phi)
 
 # Encrypt our message
-cypher = (message**e) % n
-print(cypher)
+def encrypt(message, e, n):
+    """ Return encrypted message cipher"""
+    return (message**e) % n
 
 
-# decrypt
+cipher = encrypt(message, e, n)
+print(cipher)
 
-origMessage = (cypher**d) % n
-print(origMessage)
+
+# decrypt our message
+def decrypt(cipher, d, n):
+    """ Return decrypted message cipher"""
+    return (cipher**d) % n
+
+
+
+print(decrypt(cipher, d, n))
