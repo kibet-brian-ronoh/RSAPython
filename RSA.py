@@ -34,3 +34,7 @@ def modinv(a, m):
 
 
 d = modinv(e, phi)
+
+# Encrypt our message
+cypher = (message**e) % n
+print(cypher)
